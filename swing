@@ -1,0 +1,108 @@
+package ppt6;
+
+import java.awt.FlowLayout;
+
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JScrollPane;
+import javax.swing.JTree;
+import javax.swing.tree.DefaultMutableTreeNode;
+
+public class JFrameExam1 {
+	
+		private JFrame frame;
+		
+		public JFrameExam1() {
+			// 1)JFrame 객체 생성
+			frame = new JFrame("JFrame 생성");
+			
+			// 2) JFrame 위치/크기 설정
+			frame.setSize(600, 500);
+			frame.setLocation(100, 200);
+			frame.setLayout(new FlowLayout(FlowLayout.LEFT));
+			
+			JMenuBar menuBar = new JMenuBar();
+			
+			JMenu fileMenu = new JMenu("파일(F)");
+			
+			JMenuItem newItem = new JMenuItem("새로만들기(N)");
+			JMenuItem windowItem = new JMenuItem("새창(W)");
+			JMenuItem openItem = new JMenuItem("열기(O)");
+			JMenuItem saveItem = new JMenuItem("저장(S)");
+			
+			fileMenu.add(newItem);
+			fileMenu.add(windowItem);
+			fileMenu.add(openItem);
+			fileMenu.addSeparator(); //구분선
+			fileMenu.add(saveItem);
+			
+			JMenu editMenu = new JMenu("파일(E)");
+			JMenu formatMenu = new JMenu("파일(O)");
+			JMenu viewMenu = new JMenu("파일(V)");
+			JMenu helpMenu = new JMenu("파일(H)");
+			
+			menuBar.add(fileMenu);
+			menuBar.add(editMenu);
+			menuBar.add(formatMenu);
+			menuBar.add(viewMenu);
+			menuBar.add(helpMenu);
+			
+			frame.setJMenuBar(menuBar);
+			
+			//루트노드
+			DefaultMutableTreeNode root = new DefaultMutableTreeNode("192.168.1.1");
+			
+			//루트노드에 하위노드 추가
+			DefaultMutableTreeNode ipsLog = new DefaultMutableTreeNode("DBMS 침입탐지 로그");
+			DefaultMutableTreeNode searchLog = new DefaultMutableTreeNode("로그 조회");
+			
+			root.add(ipsLog);
+			root.add(searchLog);
+			
+			ipsLog.add(new DefaultMutableTreeNode("기본 탐지 정책"));
+			ipsLog.add(new DefaultMutableTreeNode("사용자 정의 정책"));
+			
+			searchLog.add(new DefaultMutableTreeNode("서비스 로그"));
+			searchLog.add(new DefaultMutableTreeNode("기타"));
+			
+			JTree tree = new JTree(root);
+			JScrollPane scrollPane = new JScrollPane(tree);	
+			frame.add(scrollPane);
+			
+			
+			
+			/*
+			JLabel label = new JLabel("JLabel");
+	        frame.add(label);
+	        
+	        JTextField textField = new JTextField("JTextField"); 
+	        frame.add(textField);
+			
+	    	JButton button;
+			for(int i=1; i<=1; i++) {
+				button= new JButton("JButton" + i);
+				frame.add(button);
+			}
+			
+	        
+	        JTextArea textArea = new JTextArea("JTextArea"); 
+	        frame.add(textArea);
+	        */
+	        
+			// 3) 윈도우가 닫힐 때의 동작 정의
+			// 4) 화면에 출력
+			frame.setVisible(true);
+			
+			
+		}
+		
+		public static void main(String[] args) {
+			JFrameExam1 frame = new JFrameExam1();
+			System.out.println("main end");
+
+	}
+
+}
+
