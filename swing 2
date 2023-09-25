@@ -1,0 +1,88 @@
+package ppt6;
+
+import java.awt.FlowLayout;
+
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
+public class JFrameExam1 {
+	
+		private JFrame frame;
+		
+		public JFrameExam1() {
+			// 1)JFrame 객체 생성
+			frame = new JFrame("JFrame 생성");
+			
+			// 2) JFrame 위치/크기 설정
+			frame.setSize(600, 500);
+			frame.setLocation(100, 200);
+			frame.setLayout(new FlowLayout());
+			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			
+			Object[][] data = {
+					{"홍길동", 30 , "남자"},
+					{"임꺽정", 25 , "여자"},
+					{"장길산", 27 , "남자"}
+			};
+			
+			String[] colums = {"이름", "나이", "상별"};
+			
+			DefaultTableModel tableModel = new DefaultTableModel(data, colums);
+					
+			JTable table = new JTable(tableModel);
+			
+			JScrollPane scrollPane = new JScrollPane(table);
+			
+			frame.add(scrollPane);
+			
+			
+			/* ComBox
+			String[] options = {"C", "C++", "Java"};
+			JComboBox<String> comboBox = new JComboBox<String>(options);
+			frame.add(comboBox);
+			*/
+			
+			/*  :RadioButton
+			String[] caption = {"C", "C++", "Java"};
+			JRadioButton[] radio = new JRadioButton[caption.length];
+			ButtonGroup radioGrp = new ButtonGroup();
+			
+			for(int i=0; i<caption.length; i++) {
+				radio[i] = new JRadioButton(caption[i]);
+				radioGrp.add(radio[i]);
+				frame.add(radio[i]);
+			}*/
+			
+			/* :CheckBox
+			String[] caption = {"C", "C++", "Java"};
+			JCheckBox[] chkbox = new JCheckBox[caption.length];
+			
+			for(int i=0; i<caption.length; i++) {
+				chkbox[i] =new JCheckBox(caption[i]);
+				frame.add(chkbox[i]);
+			}
+			*/
+			
+			
+			
+			
+			
+			
+	        
+			// 3) 윈도우가 닫힐 때의 동작 정의
+			// 4) 화면에 출력
+			frame.setVisible(true);
+			
+			
+		}
+		
+		public static void main(String[] args) {
+			JFrameExam1 frame = new JFrameExam1();
+			System.out.println("main end");
+
+	}
+
+}
+
